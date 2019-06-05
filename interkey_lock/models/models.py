@@ -41,7 +41,7 @@ class LockSaleOrder(models.Model):
         passed = True
         lista = []
         for x in self.order_line:
-            if x.price_unit < x.product_id.standard_price:
+            if x.price_unit <= x.product_id.standard_price:
                 passed = False
                 lista +=  [x.product_id.name]
         if passed == False:
