@@ -24,12 +24,12 @@ class LockPartner(models.Model):
             name_obj = self.env['res.partner'].search([('name','ilike',self.name)])
             if len(name_obj) > 1:
                 raise UserError(_(
-                    'Aviso !\nEl nombre de contacto no se puede repetir.'))
+                    'Aviso !\nEl nombre de contacto ('+str(self.name)+') ya existe, no se puede repetir.'))
         if self.vat:
             vat_obj = self.env['res.partner'].search([('vat','ilike',self.vat)])
             if len(vat_obj) > 1:
                 raise UserError(_(
-                    'Aviso !\nEl RFC de contacto no se puede repetir.'))
+                    'Aviso !\nEl RFC ('+str(self.vat)+') ya existe, no se puede repetir.'))
 
 
 class LockSaleOrder(models.Model):
